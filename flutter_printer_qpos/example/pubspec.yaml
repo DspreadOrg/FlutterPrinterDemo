@@ -58,7 +58,6 @@ flutter:
     - configs/phone.png
     - configs/pos_picture.png
     - configs/test_store.jpg
-    - configs/movistar.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
