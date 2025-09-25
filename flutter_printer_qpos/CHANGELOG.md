@@ -20,3 +20,7 @@
 ## 0.0.7
 
 * add the optional parameter isConvert to api addBitmap 
+
+## 0.0.8
+
+* update SDK version to 1.7.5

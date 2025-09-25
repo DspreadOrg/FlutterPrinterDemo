@@ -1,6 +1,6 @@
 name: flutter_printer_qpos
 description: A Flutter project about to use pos printer api, development by Dspread.
-version: 0.0.7
+version: 0.0.8
 homepage:
 
 environment:

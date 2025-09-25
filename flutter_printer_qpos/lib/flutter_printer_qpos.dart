@@ -8,57 +8,26 @@ import 'package:meta/meta.dart' show visibleForTesting;
 
 import 'package:flutter_printer_qpos/QPOSPrintModel.dart';
 
-enum PrintLine {
-  LEFT,
-  CENTER,
-  RIGHT
-}
+enum PrintLine { LEFT, CENTER, RIGHT }
 
-enum FontStyle {
-  NORMAL,
-  BOLD,
-  ITALIC,
-  BOLD_ITALIC
-}
+enum FontStyle { NORMAL, BOLD, ITALIC, BOLD_ITALIC }
 
-enum Symbology {
-  CODE_128,
-  CODABAR,
-  CODE_39,
-  EAN_8,
-  EAN_13,
-  UPC_A,
-  UPC_E
-}
+enum Symbology { CODE_128, CODABAR, CODE_39, EAN_8, EAN_13, UPC_A, UPC_E }
 
-enum ErrorLevel {
-  L,
-  M,
-  Q,
-  H
-}
+enum ErrorLevel { L, M, Q, H }
 
+enum Barcode2D { QR_CODE }
 
-
-enum Barcode2D {
-  QR_CODE
-}
-
-
-enum Barcode1D {
-  CODE_128,
-  CODABAR
-}
+enum Barcode1D { CODE_128, CODABAR }
 
 class FlutterPrinterQpos {
-
-  factory FlutterPrinterQpos(){
+  factory FlutterPrinterQpos() {
     if (_instance == null) {
-      final MethodChannel methodChannel = const MethodChannel(
-          'flutter_printer_qpos');
+      final MethodChannel methodChannel =
+          const MethodChannel('flutter_printer_qpos');
 
-      final EventChannel eventChannel = const EventChannel(
-          'flutter_printer_qpos_event');
+      final EventChannel eventChannel =
+          const EventChannel('flutter_printer_qpos_event');
 
       _instance = FlutterPrinterQpos.private(methodChannel, eventChannel);
     }
@@ -152,19 +121,33 @@ class FlutterPrinterQpos {
     params['height'] = height;
     params['content'] = content;
     params['position'] = position;
-    print('dart:printBarCode' + symbology + " " + width + " " + height + " " +
-        content + " " + position);
+    print('dart:printBarCode' +
+        symbology +
+        " " +
+        width +
+        " " +
+        height +
+        " " +
+        content +
+        " " +
+        position);
     _methodChannel.invokeMethod('printBarCode', params);
   }
 
-  void printQRCode(String errorLevel, String width, String content,
-      String position) {
+  void printQRCode(
+      String errorLevel, String width, String content, String position) {
     Map<String, String> params = Map<String, String>();
     params['errorLevel'] = errorLevel;
     params['width'] = width;
     params['content'] = content;
     params['position'] = position;
-    print('dart:printQRCode' + errorLevel + " " + width + " " + content + " " +
+    print('dart:printQRCode' +
+        errorLevel +
+        " " +
+        width +
+        " " +
+        content +
+        " " +
         position);
     _methodChannel.invokeMethod('printQRCode', params);
   }
@@ -176,14 +159,12 @@ class FlutterPrinterQpos {
     _methodChannel.invokeMethod('printBitmap', params);
   }
 
-
   void addtext(String text) {
     Map<String, String> params = Map<String, String>();
     params['text'] = text;
     print('dart:addtext' + text.toString());
     _methodChannel.invokeMethod('addText', params);
   }
-
 
   void addTexts(String text1, String text2, String row1, String row2,
       String position1, String position2) {
@@ -197,7 +178,6 @@ class FlutterPrinterQpos {
     print('dart:addTexts' + params.toString());
     _methodChannel.invokeMethod('addTexts', params);
   }
-
 
   // void addBitmap(Uint8List bitmap) {
   //   Map<String, Uint8List> params = Map<String, Uint8List>();
@@ -215,7 +195,7 @@ class FlutterPrinterQpos {
     _methodChannel.invokeMethod('addBitmap', params);
   }
 
-  void addQRCode(String size, String qrName, String context, String position){
+  void addQRCode(String size, String qrName, String context, String position) {
     Map<String, String> params = Map<String, String>();
     params['size'] = size;
     params['qrName'] = qrName;
@@ -225,8 +205,8 @@ class FlutterPrinterQpos {
     _methodChannel.invokeMethod('addQRCode', params);
   }
 
-
-  void addBarCode(String BarName, String width, String height,String context, String position){
+  void addBarCode(String BarName, String width, String height, String context,
+      String position) {
     Map<String, String> params = Map<String, String>();
     params['BarName'] = BarName;
     params['width'] = width;
@@ -236,7 +216,6 @@ class FlutterPrinterQpos {
     print('dart:addBarCode' + params.toString());
     _methodChannel.invokeMethod('addBarCode', params);
   }
-
 
   void printReceipt() {
     _methodChannel.invokeMethod('print');
@@ -269,5 +248,4 @@ class FlutterPrinterQpos {
   void releaseSound() {
     _methodChannel.invokeMethod('releaseSound');
   }
-
 }

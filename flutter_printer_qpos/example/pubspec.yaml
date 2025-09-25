@@ -15,7 +15,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter_printer_qpos: ^0.0.7
+  flutter_printer_qpos: ^0.0.8
 #  flutter_printer_qpos:
 #    path: ../
   flutter:

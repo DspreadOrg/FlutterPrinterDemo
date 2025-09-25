@@ -140,11 +140,11 @@ public class PosPrinterPluginHandler {
 
     public static void printBitmap(Bitmap bitmap) {
         try {
-            PrinterLayout printerLayout = new PrinterLayout(mContext);
+          /*  PrinterLayout printerLayout = new PrinterLayout(mContext);
             BitmapPrintLine bitmapPrintLine = new BitmapPrintLine(bitmap, PrintLine.CENTER, true);
             printerLayout.addBitmap(bitmapPrintLine);
-            Bitmap bitmap1 = printerLayout.viewToBitmap();
-            mPrinter.printBitmap(mContext, bitmap1);
+            Bitmap bitmap1 = printerLayout.viewToBitmap();*/
+            mPrinter.printBitmap(mContext, bitmap);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -200,13 +200,12 @@ public class PosPrinterPluginHandler {
     public static void addBitmap(Bitmap bitmap, boolean isConvert) {
         try {
             TRACE.d("handler addBitmap:isConvert:"+isConvert);
-
 //            Bitmap  bitmapSmall = setImgSize(bitmap,10);
             PrinterLayout printerLayout = new PrinterLayout(mContext);
             BitmapPrintLine bitmapPrintLine = new BitmapPrintLine(bitmap, PrintLine.CENTER, isConvert);
             printerLayout.addBitmap(bitmapPrintLine);
             Bitmap bitmap1 = printerLayout.viewToBitmap();
-            mPrinter.addBitmap(bitmap1);
+            mPrinter.addBitmap(bitmap);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -215,6 +214,7 @@ public class PosPrinterPluginHandler {
 
     public static void setFooter(int height) {
         try {
+            TRACE.d("setFooter height--:"+height);
             mPrinter.setFooter(height);
         } catch (Exception e) {
             e.printStackTrace();

@@ -119,7 +119,6 @@ public class FlutterPrinterQposPlugin implements FlutterPlugin, ActivityAware, M
             String text = call.argument("text");
             PosPrinterPluginHandler.printText(text);
         } else if (call.method.equals("printBarCode")) {
-            TRACE.d("printBarCode");
             String symbology = call.argument("symbology");
             int width = Integer.parseInt(call.argument("width"));
             int height = Integer.parseInt(call.argument("height"));
@@ -173,7 +172,8 @@ public class FlutterPrinterQposPlugin implements FlutterPlugin, ActivityAware, M
                 PosPrinterPluginHandler.addBitmap(bitmap);
             }
         } else if (call.method.equals("setFooter")) {
-            int height = Integer.parseInt(call.argument("height"));
+           // int height = Integer.parseInt(call.argument("height"));
+            int height = call.argument("height");
             PosPrinterPluginHandler.setFooter(height);
         }else if (call.method.equals("addQRCode")){
             int size = Integer.parseInt(call.argument("size"));

@@ -74,10 +74,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_printer_qpos
-      sha256: c9d5831f75165274abc64e18ddb163d16bd3ed99c248e4c958ae75bdd492ee74
+      sha256: "8525e3cb1116623a7f2f8a16b1ea1264fc1e80938a1de9fadc9e126fb70b42fd"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.0.7"
+    version: "0.0.8"
   flutter_test:
     dependency: "direct dev"
     description: flutter
